@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="UploadFileToDocLib">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SiteName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocLibName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FullUrlContainsFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BinaryFile" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsReplaceExistingFiles" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileToDocLibResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFileNameForDocLib">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileNameForDocLibResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileNameForDocLibResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFilesOfDocLib">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SiteName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteFileUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFilesOfDocLibResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="HasFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DocLibUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HasFileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateFolderToDocLib">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SiteUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocLibName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Folders" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateFolderToDocLibResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFileNameForDocLibCom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SiteUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocLibName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Folder" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileNameForDocLibComResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileNameForDocLibComResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFolderNameForDocLibCom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SiteUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocLibName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Folder" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFolderNameForDocLibComResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFolderNameForDocLibComResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadFileToVirtualDirectory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SiteUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocLibName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadFileToVirtualDirectoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadFileToVirtualDirectoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDocLib">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SiteUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocLibName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocLibDesc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDocLibResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddAuthority">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SiteUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AdDatatable">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAuthorityResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ImageCompress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="scaleFactor" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ary" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImageCompressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImageCompressResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImageAutoCompress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileLength" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ary" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImageAutoCompressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImageAutoCompressResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sayHello">
+        <s:complexType />
+      </s:element>
+      <s:element name="sayHelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sayHelloResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadFileToDocLibSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFileToDocLib" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileToDocLibSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileToDocLibResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileNameForDocLibSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileNameForDocLib" />
+  </wsdl:message>
+  <wsdl:message name="GetFileNameForDocLibSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileNameForDocLibResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFilesOfDocLibSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFilesOfDocLib" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFilesOfDocLibSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFilesOfDocLibResponse" />
+  </wsdl:message>
+  <wsdl:message name="HasFileSoapIn">
+    <wsdl:part name="parameters" element="tns:HasFile" />
+  </wsdl:message>
+  <wsdl:message name="HasFileSoapOut">
+    <wsdl:part name="parameters" element="tns:HasFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateFolderToDocLibSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateFolderToDocLib" />
+  </wsdl:message>
+  <wsdl:message name="CreateFolderToDocLibSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateFolderToDocLibResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileNameForDocLibComSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileNameForDocLibCom" />
+  </wsdl:message>
+  <wsdl:message name="GetFileNameForDocLibComSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileNameForDocLibComResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFolderNameForDocLibComSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFolderNameForDocLibCom" />
+  </wsdl:message>
+  <wsdl:message name="GetFolderNameForDocLibComSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFolderNameForDocLibComResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileToVirtualDirectorySoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadFileToVirtualDirectory" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileToVirtualDirectorySoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadFileToVirtualDirectoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocLibSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateDocLib" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocLibSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateDocLibResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddAuthoritySoapIn">
+    <wsdl:part name="parameters" element="tns:AddAuthority" />
+  </wsdl:message>
+  <wsdl:message name="AddAuthoritySoapOut">
+    <wsdl:part name="parameters" element="tns:AddAuthorityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImageCompressSoapIn">
+    <wsdl:part name="parameters" element="tns:ImageCompress" />
+  </wsdl:message>
+  <wsdl:message name="ImageCompressSoapOut">
+    <wsdl:part name="parameters" element="tns:ImageCompressResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImageAutoCompressSoapIn">
+    <wsdl:part name="parameters" element="tns:ImageAutoCompress" />
+  </wsdl:message>
+  <wsdl:message name="ImageAutoCompressSoapOut">
+    <wsdl:part name="parameters" element="tns:ImageAutoCompressResponse" />
+  </wsdl:message>
+  <wsdl:message name="sayHelloSoapIn">
+    <wsdl:part name="parameters" element="tns:sayHello" />
+  </wsdl:message>
+  <wsdl:message name="sayHelloSoapOut">
+    <wsdl:part name="parameters" element="tns:sayHelloResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ETGMTNWebServiceSoap">
+    <wsdl:operation name="UploadFileToDocLib">
+      <wsdl:input message="tns:UploadFileToDocLibSoapIn" />
+      <wsdl:output message="tns:UploadFileToDocLibSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileNameForDocLib">
+      <wsdl:input message="tns:GetFileNameForDocLibSoapIn" />
+      <wsdl:output message="tns:GetFileNameForDocLibSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFilesOfDocLib">
+      <wsdl:input message="tns:DeleteFilesOfDocLibSoapIn" />
+      <wsdl:output message="tns:DeleteFilesOfDocLibSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasFile">
+      <wsdl:input message="tns:HasFileSoapIn" />
+      <wsdl:output message="tns:HasFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolderToDocLib">
+      <wsdl:input message="tns:CreateFolderToDocLibSoapIn" />
+      <wsdl:output message="tns:CreateFolderToDocLibSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileNameForDocLibCom">
+      <wsdl:input message="tns:GetFileNameForDocLibComSoapIn" />
+      <wsdl:output message="tns:GetFileNameForDocLibComSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderNameForDocLibCom">
+      <wsdl:input message="tns:GetFolderNameForDocLibComSoapIn" />
+      <wsdl:output message="tns:GetFolderNameForDocLibComSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFileToVirtualDirectory">
+      <wsdl:input message="tns:DownloadFileToVirtualDirectorySoapIn" />
+      <wsdl:output message="tns:DownloadFileToVirtualDirectorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocLib">
+      <wsdl:input message="tns:CreateDocLibSoapIn" />
+      <wsdl:output message="tns:CreateDocLibSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAuthority">
+      <wsdl:input message="tns:AddAuthoritySoapIn" />
+      <wsdl:output message="tns:AddAuthoritySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImageCompress">
+      <wsdl:input message="tns:ImageCompressSoapIn" />
+      <wsdl:output message="tns:ImageCompressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImageAutoCompress">
+      <wsdl:input message="tns:ImageAutoCompressSoapIn" />
+      <wsdl:output message="tns:ImageAutoCompressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sayHello">
+      <wsdl:input message="tns:sayHelloSoapIn" />
+      <wsdl:output message="tns:sayHelloSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ETGMTNWebServiceSoap" type="tns:ETGMTNWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadFileToDocLib">
+      <soap:operation soapAction="http://tempuri.org/UploadFileToDocLib" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileNameForDocLib">
+      <soap:operation soapAction="http://tempuri.org/GetFileNameForDocLib" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFilesOfDocLib">
+      <soap:operation soapAction="http://tempuri.org/DeleteFilesOfDocLib" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasFile">
+      <soap:operation soapAction="http://tempuri.org/HasFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolderToDocLib">
+      <soap:operation soapAction="http://tempuri.org/CreateFolderToDocLib" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileNameForDocLibCom">
+      <soap:operation soapAction="http://tempuri.org/GetFileNameForDocLibCom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderNameForDocLibCom">
+      <soap:operation soapAction="http://tempuri.org/GetFolderNameForDocLibCom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFileToVirtualDirectory">
+      <soap:operation soapAction="http://tempuri.org/DownloadFileToVirtualDirectory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocLib">
+      <soap:operation soapAction="http://tempuri.org/CreateDocLib" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAuthority">
+      <soap:operation soapAction="http://tempuri.org/AddAuthority" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImageCompress">
+      <soap:operation soapAction="http://tempuri.org/ImageCompress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImageAutoCompress">
+      <soap:operation soapAction="http://tempuri.org/ImageAutoCompress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sayHello">
+      <soap:operation soapAction="http://tempuri.org/sayHello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ETGMTNWebServiceSoap12" type="tns:ETGMTNWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadFileToDocLib">
+      <soap12:operation soapAction="http://tempuri.org/UploadFileToDocLib" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileNameForDocLib">
+      <soap12:operation soapAction="http://tempuri.org/GetFileNameForDocLib" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFilesOfDocLib">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFilesOfDocLib" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasFile">
+      <soap12:operation soapAction="http://tempuri.org/HasFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolderToDocLib">
+      <soap12:operation soapAction="http://tempuri.org/CreateFolderToDocLib" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileNameForDocLibCom">
+      <soap12:operation soapAction="http://tempuri.org/GetFileNameForDocLibCom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderNameForDocLibCom">
+      <soap12:operation soapAction="http://tempuri.org/GetFolderNameForDocLibCom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFileToVirtualDirectory">
+      <soap12:operation soapAction="http://tempuri.org/DownloadFileToVirtualDirectory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocLib">
+      <soap12:operation soapAction="http://tempuri.org/CreateDocLib" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAuthority">
+      <soap12:operation soapAction="http://tempuri.org/AddAuthority" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImageCompress">
+      <soap12:operation soapAction="http://tempuri.org/ImageCompress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImageAutoCompress">
+      <soap12:operation soapAction="http://tempuri.org/ImageAutoCompress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sayHello">
+      <soap12:operation soapAction="http://tempuri.org/sayHello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ETGMTNWebService">
+    <wsdl:port name="ETGMTNWebServiceSoap" binding="tns:ETGMTNWebServiceSoap">
+      <soap:address location="http://twfpc02/_layouts/WS_JWETG_001/JWETG_MTNWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ETGMTNWebServiceSoap12" binding="tns:ETGMTNWebServiceSoap12">
+      <soap12:address location="http://twfpc02/_layouts/WS_JWETG_001/JWETG_MTNWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
